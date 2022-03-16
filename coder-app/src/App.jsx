@@ -1,14 +1,11 @@
 
 import './App.css';
-import NavBar from './components/navbar/NavBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import RoutesApp from './contenedor/RoutesApp';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <NavBar/>
-      </header>
+      <RoutesApp/>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import "./navBar.css" 
+import Cart from '../carrito/Cart'
+
 function NavBar() {
   return (    
     <Navbar className='menu' expand="lg">
@@ -10,6 +12,7 @@ function NavBar() {
       <Navbar.Brand href="#home">
         MercaditoFree
       </Navbar.Brand>
+      
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
@@ -17,6 +20,7 @@ function NavBar() {
           <Nav.Link href="#link">Ofertas</Nav.Link>
           <Nav.Link href="#link">Full</Nav.Link>
           <Nav.Link href="#link">Precios más bajos</Nav.Link>
+          <Cart/>
         </Nav>
       </Navbar.Collapse>
     </Container>
