@@ -6,7 +6,7 @@ function Greetings(props) {
 
 function ItemListContainer() {
   return (
-    <Greetings mensaje="soy tu lista de productos"/>
+    <Greetings mensaje="tu lista de productos"/>
   )
 }
 
