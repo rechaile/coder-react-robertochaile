@@ -32,9 +32,9 @@
   }
   
   .numContainer__button[disabled] {
-    color: #F7F0F5;
+    color: grey;
     background-color: transparent;
-    border: 1px solid #73877B;
+    border: 1px solid #080808;
   }
   
   .numContainer__cantidad {
