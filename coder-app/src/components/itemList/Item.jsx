@@ -20,7 +20,7 @@ const Item = ({ name, image, price, stock, id}) => {
             
             <div>
                 <button className='boton__principal'>Ver más</button>
-                <ItemCount stock={stock} onAdd={cantAgregada} initial={1} />
+                <ItemCount stock={stock} onAdd={cantAgregada} inicial={1} />
             </div>
         </article>
   )

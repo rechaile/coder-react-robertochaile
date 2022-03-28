@@ -27,7 +27,7 @@ const ItemList = () => {
   }
 useEffect (()=> {
     getProductosBD();
-},[]) 
+}, []) 
 
 return ( 
     <div className="product-list-container">
