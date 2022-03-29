@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import ItemCount from '../contador/ItemCount';
 import './estilos/item.css';
 
@@ -19,7 +20,9 @@ const Item = ({ name, image, price, stock, id}) => {
             <p className="product-card__name">${price}</p>
             
             <div>
-                <button className='boton__principal'>Ver más</button>
+                <Link to={`/detalle/${id}`}>   
+                    <button className='boton__principal'>Ver más</button>
+                </Link>
                 <ItemCount stock={stock} onAdd={cantAgregada} inicial={1} />
             </div>
         </article>

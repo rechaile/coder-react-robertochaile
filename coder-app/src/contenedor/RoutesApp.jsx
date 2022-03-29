@@ -1,15 +1,34 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from '../components/navbar/NavBar';
 import ItemListContainer from '../components/itemList/ItemListContainer';
 import ItemDetailContainer from '../components/itemList/ItemDetailContainer';
+import Cart from '../components/carrito/Cart'
+
 function RoutesApp() {
   return (
-    <div>
+    <BrowserRouter>
       <NavBar />
-      <ItemListContainer /> 
-      <ItemDetailContainer />
-    </div>
+      <Routes>
+        <Route 
+        path="/" 
+        element={
+          <ItemListContainer />
+        }/> 
+        <Route
+        path="/detalle"
+        element={<ItemDetailContainer />}/>
+        <Route
+        path="/cart"
+        element={
+          <Cart/>
+        }
+        />
+      </Routes>
+      
+      
+    </BrowserRouter>
   )
 }
 
