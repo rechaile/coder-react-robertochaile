@@ -17,7 +17,7 @@ function RoutesApp() {
           <ItemListContainer />
         }/> 
         <Route
-        path="/detalle"
+        path="/detalle/:detalleId"
         element={<ItemDetailContainer />}/>
         <Route
         path="/cart"
