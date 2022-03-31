@@ -39,6 +39,55 @@ export const listaProductos = [
         stock: 8,
         id: 5,
       },
+      {
+        name: 'Notebook Exo Xq3h-s3182 Intel I3-11va 8gb Ssd 256 Gb Fhd W11',
+        price: 99999,
+        image:
+          'https://http2.mlstatic.com/D_NQ_NP_2X_826645-MLA49020786660_022022-F.webp',
+        stock: 12,
+        id: 6,
+      },
+      {
+        name: 'Samsung Galaxy Z Flip3 5G 128 GB phantom black 8 GB RAM',
+        price: 134999,
+        image:
+          'https://http2.mlstatic.com/D_NQ_NP_2X_676914-MLA47887111268_102021-F.webp',
+        stock: 10,
+        id: 7,
+      },
+      {
+        name: 'Samsung Galaxy S21 Fe Gris Oscuro 5g',
+        price: 112999,
+        image:
+          'https://http2.mlstatic.com/D_NQ_NP_2X_879603-MLA49171604463_022022-F.webp',
+        stock: 20,
+        id: 8,
+      },
+      {
+        name: 'SNotebook Noblex 14.1" Pantalla HD Intel Celeron 4GB/128GB SSD',
+        price: 48199,
+        image:
+          'https://http2.mlstatic.com/D_NQ_NP_2X_997940-MLA47767920611_102021-F.webp',
+        stock: 15,
+        id: 9,
+      },
+      {
+        name: 'Notebook Lenovo Thinkbook 13s G2 Itl 13.3" I7 16gb 512ssd',
+        price: 169999,
+        image:
+          'https://http2.mlstatic.com/D_NQ_NP_2X_658695-MLA49445347978_032022-F.webp',
+        stock: 5,
+        id: 10,
+      },
+      {
+        name: 'Auricular inalámbrico JBL Tune 510BT negro" I7 16gb 512ssd',
+        price: 4899,
+        image:
+          'https://http2.mlstatic.com/D_NQ_NP_2X_785994-MLA46540771007_062021-F.webp',
+        stock: 21,
+        id: 11,
+      },
+      
   ];
   
   export const productOne = 
