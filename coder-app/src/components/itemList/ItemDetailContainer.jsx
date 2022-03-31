@@ -7,7 +7,8 @@ import ItemDetail from "./ItemDetail";
 const ItemDetailContainer= () => {
     
         const [producto, setProducto] = useState([]);
-        
+        const [cargando, setCargando] = useState(true)
+
         const getProducto = new Promise ((resolve, reject) => {
             setTimeout (()=> {
                 resolve (productOne)
@@ -20,6 +21,7 @@ const ItemDetailContainer= () => {
                 console.log(err);
                 alert('No podemos mostrar el producto en este momento');
             })
+            .finally (()=> setCargando (false))
           }
         useEffect (()=> {
             getProductoBD();
@@ -27,11 +29,13 @@ const ItemDetailContainer= () => {
     
         
         return ( 
+             cargando ? <p>Cargando producto...</p> :
+                ( 
             <>
                 <ItemDetail producto={producto}/>
             </>
-        );
-    }    
+                )
+        )}    
   
 
   
