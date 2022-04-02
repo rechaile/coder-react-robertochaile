@@ -4,7 +4,7 @@ import ItemCount from '../contador/ItemCount';
 import './estilos/item.css';
 
 
-const Item = ({ name, image, price, stock, id}) => {
+const Item = ({ name, image, price, stock, id, category}) => {
     const cantAgregada = (cantidad) => {
         alert(`Agregaste ${cantidad} productos`);
       };
@@ -16,6 +16,9 @@ const Item = ({ name, image, price, stock, id}) => {
             </div>
             <div>
                 <h3 className="product-card__name">{name}</h3>
+            </div>
+            <div>
+                <h2 className="product-card__name">{category}</h2>
             </div>
             <p className="product-card__name">${price}</p>
             

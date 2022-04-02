@@ -20,12 +20,20 @@ function NavBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="#link">Ofertas</Nav.Link>
-          <Nav.Link href="#link">Full</Nav.Link>
-          <Nav.Link href="#link">Precios más bajos</Nav.Link>
-          <NavLink to={`/cart`}>
-            <MdAddShoppingCart className="carrito"/>
-          </NavLink>
+          <Nav.Link>
+            <NavLink to={'/categoria/Oferta'}>Ofertas</NavLink>
+          </Nav.Link>
+          <Nav.Link>
+            <NavLink to={'/categoria/Full'}>Full</NavLink>
+          </Nav.Link>
+          <Nav.Link>
+            <NavLink to={'/categoria/Precios+mas+bajos'}>Precios más bajos</NavLink>
+          </Nav.Link>
+          <Nav.Link>
+            <NavLink to={`/cart`}>
+              <MdAddShoppingCart className="carrito"/>
+            </NavLink>
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>

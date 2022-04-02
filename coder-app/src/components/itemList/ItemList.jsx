@@ -44,6 +44,7 @@ return (
                     price={producto.price}
                     stock={producto.stock}
                     id={producto.id}
+                    category= {producto.category}
                   />
                 </div>
               );
