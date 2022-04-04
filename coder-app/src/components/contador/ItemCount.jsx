@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { productOne } from '../../data/data';
 
 import "./itemCount.css";
 
@@ -75,6 +76,27 @@ const ContinuarCompra = () => {
         alert(`Agregaste ${cantidad} productos`);
       };
     
+      const [producto, setProducto] = useState([]);
+      
+      
+      const getProducto = new Promise ((resolve, reject) => {
+          setTimeout (()=> {
+              resolve (productOne)
+          }, 2000);
+      });
+      
+      useEffect (()=> {
+          
+          getProducto
+          .then(result => setProducto(result))
+          .catch(err => {
+              console.log(err);
+              alert('No podemos mostrar el producto en este momento');
+          })
+         } , [])
+         
+    const stock = producto.stock
+    
    
     const [inputType, setInputType ] = useState('button')
 
@@ -88,7 +110,7 @@ const ContinuarCompra = () => {
             
             {
                 inputType === 'button' ? 
-                    <ItemCount inicial={1} stock={7} onAdd = {cantAgregada} handleInter={handleInter} />
+                    <ItemCount inicial={1} stock={stock} onAdd = {cantAgregada} handleInter={handleInter} />
                 : 
                     <FinCompra />
             }
