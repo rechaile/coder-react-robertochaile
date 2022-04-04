@@ -46,13 +46,27 @@
   }
   
   .boton__principal {
+    color: black;
     background-color: #FAC748;
     border: none;
     border-radius: 4px;
     font-weight: 700;
     font-size: 1rem;
-    margin: 20px auto;
-    width: 112px;
-    height: 36px;
+    margin: 20px 20px auto;
+    width: 148px;
+    height: 54px;
+    cursor: pointer;
+  }
+
+  .boton__secundario {
+    color: #ffffff;
+    background-color: #1d2f6f;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 20px 20px auto;
+    width: 148px;
+    height: 54px;
     cursor: pointer;
   }

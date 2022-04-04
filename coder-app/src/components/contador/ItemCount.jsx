@@ -1,10 +1,37 @@
 import React from 'react';
 import { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import "./itemCount.css";
 
+const FinCompra= ()=> {
 
-const ItemCount = ({ inicial, stock, onAdd }) => {
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <Link to='/cart' >
+                     <button 
+                    className="boton__principal">  
+                    Terminar compra</button>
+                    </Link>
+                
+                <br></br>
+                    <Link to={'/'}>   
+                        <button 
+                            className="boton__secundario" 
+                        >Seguir comprando</button>
+                    </Link>
+                </Col>
+            </Row>
+        </Container>
+    )
+}
+
+const ItemCount = ({ inicial, stock, onAdd, handleInter }) => {
+
+    
 
 const [cantidad, setCantidad] = useState (inicial);
 
@@ -33,7 +60,7 @@ const agregarProd = (num)=> {
 
         <button 
         className='boton__principal'
-        onClick={() => onAdd(cantidad)}
+        onClick={() => { onAdd(cantidad) ; handleInter()}}
         disabled= {stock === 0 ? true : null}
         >
             Añadir
@@ -42,4 +69,32 @@ const agregarProd = (num)=> {
   )
 }
 
-export default ItemCount
+const ContinuarCompra = () => {
+
+    const cantAgregada = (cantidad) => {
+        alert(`Agregaste ${cantidad} productos`);
+      };
+    
+   
+    const [inputType, setInputType ] = useState('button')
+
+    const handleInter=()=>{
+        setInputType('input')
+    }
+    
+    return (
+        <div>
+            
+            
+            {
+                inputType === 'button' ? 
+                    <ItemCount inicial={1} stock={7} onAdd = {cantAgregada} handleInter={handleInter} />
+                : 
+                    <FinCompra />
+            }
+        </div>
+    )
+}
+
+
+export default ContinuarCompra

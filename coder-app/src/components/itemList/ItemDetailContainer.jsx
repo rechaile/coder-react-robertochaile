@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { listaProductos } from "../../data/data";
+import { productOne } from "../../data/data";
 
 import ItemDetail from "./ItemDetail";
 
@@ -10,29 +9,24 @@ const ItemDetailContainer= () => {
     
         const [producto, setProducto] = useState([]);
         const [cargando, setCargando] = useState(true)
-        const {detalleId} = useParams ()
 
+        
         const getProducto = new Promise ((resolve, reject) => {
             setTimeout (()=> {
-                resolve (listaProductos)
+                resolve (productOne)
             }, 2000);
         });
         
         useEffect (()=> {
-            if (detalleId) {
+            
             getProducto
-            .then(result => setProducto(result.find(item => item.id === detalleId)))
+            .then(result => setProducto(result))
             .catch(err => {
                 console.log(err);
                 alert('No podemos mostrar el producto en este momento');
             })
             .finally (()=> setCargando (false))
-          } else {
-              return (
-                  <p>No hemos podido cargar este producto</p>
-              )
-          }
-        }, [detalleId])
+          } , [])
          
         
         return ( 
