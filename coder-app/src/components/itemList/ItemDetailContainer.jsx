@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { productOne } from "../../data/data"
+import { useParams } from "react-router-dom";
+import { listaProductos } from "../../data/data";
+
 import ItemDetail from "./ItemDetail";
 
 
@@ -8,25 +10,30 @@ const ItemDetailContainer= () => {
     
         const [producto, setProducto] = useState([]);
         const [cargando, setCargando] = useState(true)
+        const {detalleId} = useParams ()
 
         const getProducto = new Promise ((resolve, reject) => {
             setTimeout (()=> {
-                resolve (productOne)
+                resolve (listaProductos)
             }, 2000);
         });
-        const getProductoBD = () => {
+        
+        useEffect (()=> {
+            if (detalleId) {
             getProducto
-            .then(result => setProducto(result))
+            .then(result => setProducto(result.find(item => item.id === detalleId)))
             .catch(err => {
                 console.log(err);
                 alert('No podemos mostrar el producto en este momento');
             })
             .finally (()=> setCargando (false))
+          } else {
+              return (
+                  <p>No hemos podido cargar este producto</p>
+              )
           }
-        useEffect (()=> {
-            getProductoBD();
-        }, [])
-    
+        }, [detalleId])
+         
         
         return ( 
              cargando ? <p>Cargando producto...</p> :
@@ -35,8 +42,7 @@ const ItemDetailContainer= () => {
                 <ItemDetail producto={producto}/>
             </>
                 )
-        )}    
-  
+        )}
 
   
        

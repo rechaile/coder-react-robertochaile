@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from '../components/navbar/NavBar';
 import ItemListContainer from '../components/itemList/ItemListContainer';
 import ItemDetailContainer from '../components/itemList/ItemDetailContainer';
@@ -17,7 +17,7 @@ function RoutesApp() {
           <ItemListContainer />
         }/> 
         <Route 
-          path="/categoria/:categoryId" 
+          path="/categoria/:categoriaId" 
           element={
             <ItemListContainer/>
           } 
@@ -32,6 +32,7 @@ function RoutesApp() {
           <Cart/>
         }
         />
+        <Route path='/*' element={<Navigate to='/' replace />} />
       </Routes>
       
       

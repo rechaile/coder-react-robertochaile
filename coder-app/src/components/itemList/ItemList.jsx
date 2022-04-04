@@ -3,12 +3,14 @@ import { listaProductos } from '../../data/data';
 import Item from './Item';
 
 import './estilos/itemList.css';
+import { useParams } from 'react-router-dom';
 
 
 const ItemList = () => {
   
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true)
+  const {categoriaId} = useParams()
 
   const getProductos = new Promise ((resolve, reject) => {
       setTimeout (()=> {
@@ -16,18 +18,27 @@ const ItemList = () => {
       }, 2000);
   });
 
-  const getProductosBD = () => {
-    getProductos
-    .then(result => setProductos(result))
-    .catch(err => {
-        console.log(err);
-        alert('No podemos mostrar los productos en este momento');
-    })
-    .finally (()=> setCargando (false))
-  }
+  
+   
 useEffect (()=> {
-    getProductosBD();
-}, []) 
+  if (categoriaId) {
+  getProductos
+  .then(result => setProductos(result.filter(item => item.category === categoriaId)))
+  .catch(err => {
+      console.log(err);
+      alert('No podemos mostrar los productos en este momento');
+  })
+  .finally (()=> setCargando (false))
+} else {
+  getProductos
+  .then(result => setProductos(result))
+  .catch(err => {
+      console.log(err);
+      alert('No podemos mostrar los productos en este momento');
+  })
+  .finally (()=> setCargando (false))
+  }
+}, [categoriaId]) 
 
 return ( 
     <div className="product-list-container">
