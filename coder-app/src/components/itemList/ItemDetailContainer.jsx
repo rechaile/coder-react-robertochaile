@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { productOne } from "../../data/data";
 
 import ItemDetail from "./ItemDetail";
@@ -30,7 +31,16 @@ const ItemDetailContainer= () => {
          
         
         return ( 
-             cargando ? <p>Cargando producto...</p> :
+             cargando ? 
+             <Container>
+                 <Row>
+                     <Col>
+                        <div>
+                            <Spinner animation="border" size="m" />
+                        </div>
+                    </Col>
+                </Row>
+             </Container> :
                 ( 
             <>
                 <ItemDetail producto={producto}/>

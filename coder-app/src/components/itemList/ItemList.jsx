@@ -4,6 +4,8 @@ import Item from './Item';
 
 import './estilos/itemList.css';
 import { useParams } from 'react-router-dom';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
+
 
 
 const ItemList = () => {
@@ -43,7 +45,15 @@ useEffect (()=> {
 return ( 
     <div className="product-list-container">
     {
-      cargando ? <p>Cargando productos...</p> 
+      cargando ?       
+      
+      <Container>
+      <Row>
+          <Col>
+             <Spinner animation="border" size="m" />
+         </Col>
+     </Row>
+  </Container>
       : ( <>
           {
             productos.map((producto) => {
