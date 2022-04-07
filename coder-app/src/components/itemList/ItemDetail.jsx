@@ -4,7 +4,7 @@ import ContinuarCompra from '../contador/ItemCount';
 
 import './estilos/item.css';
 
-function ItemDetail({ producto }) {
+function ItemDetail({ name, price, image, stock, detalle }) {
 
  
   
@@ -13,20 +13,20 @@ function ItemDetail({ producto }) {
       <Container>
           <Row>          
             <Col>
-              <div>{producto.name}</div>
+              <div>{name}</div>
                   
-              <div>{producto.price}</div>  
+              <div>{price}</div>  
 
-              <div>{producto.detalle}</div> 
+              <div>{detalle}</div> 
             </Col>
             <Col>
               <div>
-                  <img className='product-card__image' src={producto.image} alt='' />
+                  <img className='product-card__image' src={image} alt='' />
               </div>
             </Col>
           </Row>
           <Row>
-            <ContinuarCompra />
+            <ContinuarCompra stock={stock} />
           </Row>
       </Container>        
       

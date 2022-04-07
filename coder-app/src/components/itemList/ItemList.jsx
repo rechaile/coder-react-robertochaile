@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { listaProductos } from '../../data/data';
+import { getProductos } from '../../data/data';
 import Item from './Item';
 
 import './estilos/itemList.css';
@@ -14,11 +14,7 @@ const ItemList = () => {
   const [cargando, setCargando] = useState(true)
   const {categoriaId} = useParams()
 
-  const getProductos = new Promise ((resolve, reject) => {
-      setTimeout (()=> {
-          resolve (listaProductos)
-      }, 2000);
-  });
+ 
 
   
    

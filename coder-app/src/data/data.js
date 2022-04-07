@@ -111,13 +111,12 @@ export const listaProductos = [
       },
       
   ];
+
+export  const getProductos = new Promise ((resolve, reject) => {
+    setTimeout (()=> {
+        resolve (listaProductos)
+    }, 2000);
+});
   
-  export const productOne = 
-    {
-      name: 'Smart TV TCL 50P715 LED 4K 50" 100V/240V',
-      price: 73999,
-      image:'https://http2.mlstatic.com/D_NQ_NP_2X_711131-MLA46112698238_052021-F.webp',
-      stock: 12,
-      id: 1,
-      detalle: "Soy el detalle del producto"
-    }
+
+

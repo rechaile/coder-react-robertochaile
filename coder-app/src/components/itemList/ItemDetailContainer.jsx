@@ -1,35 +1,33 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
-import { productOne } from "../../data/data";
+import { useParams } from "react-router-dom";
+import { getProductos } from "../../data/data";
 
 import ItemDetail from "./ItemDetail";
 
 
 
 const ItemDetailContainer= () => {
-    
-        const [producto, setProducto] = useState([]);
+        
+        const [productos, setProductos] = useState([]);
         const [cargando, setCargando] = useState(true)
-
-        
-        const getProducto = new Promise ((resolve, reject) => {
-            setTimeout (()=> {
-                resolve (productOne)
-            }, 2000);
-        });
-        
+        const {detalleId} = useParams()
+        const prodId = parseInt(detalleId)
         useEffect (()=> {
             
-            getProducto
-            .then(result => setProducto(result))
+            getProductos
+            .then(result => setProductos(result))
             .catch(err => {
                 console.log(err);
                 alert('No podemos mostrar el producto en este momento');
             })
             .finally (()=> setCargando (false))
-          } , [])
+          } , [detalleId])
          
         
+
+        const producto = productos.find(item => item.id === prodId ) 
+        console.log (producto) 
         return ( 
              cargando ? 
              <Container>
@@ -43,7 +41,12 @@ const ItemDetailContainer= () => {
              </Container> :
                 ( 
             <>
-                <ItemDetail producto={producto}/>
+                <ItemDetail 
+                name={producto.name} 
+                stock={producto.stock} 
+                detalle={producto.detalle} 
+                image={producto.image}
+                price={producto.price}/>
             </>
                 )
         )}
