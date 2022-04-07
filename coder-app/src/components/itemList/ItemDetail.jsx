@@ -6,6 +6,7 @@ import './estilos/item.css';
 
 function ItemDetail({ producto }) {
 
+ 
   
   return (
       

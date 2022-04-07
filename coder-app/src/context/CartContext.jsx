@@ -5,7 +5,7 @@ export const CartContext = createContext([])
 
 export const useCartContext = () => useContext(CartContext)
 
-export const CartProvider = ({ children }) => {
+export function CartProvider({ children }) {
 
     const [cartList, setCartList] = useState([])
 
@@ -32,15 +32,15 @@ export const CartProvider = ({ children }) => {
             duration: 2000,
         })
 
-        const productsFiltered = cartList.splice(({ item }) => item.id === id)
-		setCartList(productsFiltered)
+        const newCartList = cartList.splice(({ item }) => item.id === id)
+		setCartList(newCartList)
     }
 
 
     const clearCart = () => setCartList([])
 
 	return (
-		<CartContext.Provider value={{ addItem, removeItem, clearCart, cartList}}>
+		<CartContext.Provider value={{cartList, addItem, removeItem, clearCart}}>
 			{children}
 		</CartContext.Provider>
 	)

@@ -5,10 +5,12 @@ import NavBar from '../components/navbar/NavBar';
 import ItemListContainer from '../components/itemList/ItemListContainer';
 import ItemDetailContainer from '../components/itemList/ItemDetailContainer';
 import Cart from '../components/carrito/Cart'
+import { CartProvider } from '../context/CartContext';
 
 function RoutesApp() {
   return (
     <BrowserRouter>
+    <CartProvider>
       <NavBar />
       <Routes>
         <Route 
@@ -34,7 +36,7 @@ function RoutesApp() {
         />
         <Route path='/*' element={<Navigate to='/' replace />} />
       </Routes>
-      
+      </CartProvider>  
       
     </BrowserRouter>
   )
