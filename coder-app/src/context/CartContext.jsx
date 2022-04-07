@@ -1,22 +1,27 @@
-import React, { useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { Notyf } from 'notyf'
 import 'notyf/notyf.min.css'
-export const CartContext = React.createContext()
+export const CartContext = createContext([])
+
+export const useCartContext = () => useContext(CartContext)
 
 export const CartProvider = ({ children }) => {
 
-    const [cart, setCart] = useState([])
+    const [cartList, setCartList] = useState([])
 
-    const addItem = (item, cantidad) => {
+    const addItem = (item) => {
 
         const notyf = new Notyf()
         notyf.success({
             message: `Agregaste ${item.name} al carrito`,
             duration: 2000,
         })
-
-        const cartFiltered = cart.filter(product => product.item.id !== item.id)
-        setCart([...cartFiltered, { item, cantidad }])
+        
+        
+        setCartList([
+                ...cartList,
+                item
+        ])
     }
 
     const removeItem = (id) => {
@@ -27,18 +32,15 @@ export const CartProvider = ({ children }) => {
             duration: 2000,
         })
 
-        const productsFiltered = cart.filter(({ item }) => item.id !== id)
-		setCart(productsFiltered)
+        const productsFiltered = cartList.splice(({ item }) => item.id === id)
+		setCartList(productsFiltered)
     }
 
-    const inCart = (id) => {
-        return cart.some(({ item }) => item.id === id)
-    }
 
-    const clearCart = () => setCart([])
+    const clearCart = () => setCartList([])
 
 	return (
-		<CartContext.Provider value={{ addItem, removeItem, clearCart, inCart, cart}}>
+		<CartContext.Provider value={{ addItem, removeItem, clearCart, cartList}}>
 			{children}
 		</CartContext.Provider>
 	)
