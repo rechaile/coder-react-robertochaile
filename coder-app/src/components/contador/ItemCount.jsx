@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { listaProductos } from '../../data/data';
 
 import "./itemCount.css";
 
@@ -76,6 +77,7 @@ const ContinuarCompra = () => {
       };
     
       
+   
     const [inputType, setInputType ] = useState('button')
 
     const handleInter=()=>{
