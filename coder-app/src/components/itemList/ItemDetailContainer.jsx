@@ -42,11 +42,7 @@ const ItemDetailContainer= () => {
                 ( 
             <>
                 <ItemDetail 
-                name={producto.name} 
-                stock={producto.stock} 
-                detalle={producto.detalle} 
-                image={producto.image}
-                price={producto.price}/>
+                producto={producto}/>
             </>
                 )
         )}

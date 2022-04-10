@@ -1,27 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { listaProductos } from '../../data/data';
 
 import "./itemCount.css";
 
-const FinCompra= ()=> {
+export const FinCompra= ()=> {
 
     return (
         <Container>
             <Row>
                 <Col>
+                
                     <Link to='/cart' >
-                     <button 
-                    className="boton__principal">  
+                     <button id='terminarBtn'
+                    className="boton__secundario">  
                     Terminar compra</button>
                     </Link>
                 
                 <br></br>
                     <Link to={'/'}>   
-                        <button 
-                            className="boton__secundario" 
+                        <button id='seguirBtn'
+                            className="boton__secundario__hidden" 
                         >Seguir comprando</button>
                     </Link>
                 </Col>
@@ -30,11 +30,16 @@ const FinCompra= ()=> {
     )
 }
 
-const ItemCount = ({ inicial, stock, onAdd, handleInter }) => {
+export const ItemCount = ({ inicial, stock, onAdd }) => {
 
     
 
 const [cantidad, setCantidad] = useState (inicial);
+
+const cambioBtn = () => {
+    document.getElementById('terminarBtn').classList.add('boton__principal')
+    document.getElementById('seguirBtn').classList.add('boton__secundario')
+}
 
 const agregarProd = (num)=> {
     setCantidad(cantidad + num)
@@ -61,7 +66,7 @@ const agregarProd = (num)=> {
 
         <button 
         className='boton__principal'
-        onClick={() => { onAdd(cantidad) ; handleInter()}}
+        onClick={() => { onAdd(cantidad); cambioBtn()}}
         disabled= {stock === 0 ? true : null}
         >
             Añadir
@@ -70,33 +75,4 @@ const agregarProd = (num)=> {
   )
 }
 
-const ContinuarCompra = () => {
 
-    const cantAgregada = (cantidad) => {
-        alert(`Agregaste ${cantidad} productos`);
-      };
-    
-      
-   
-    const [inputType, setInputType ] = useState('button')
-
-    const handleInter=()=>{
-        setInputType('input')
-    }
-    
-    return (
-        <div>
-            
-            
-            {
-                inputType === 'button' ? 
-                    <ItemCount inicial={1} stock={''} onAdd = {cantAgregada} handleInter={handleInter} />
-                : 
-                    <FinCompra />
-            }
-        </div>
-    )
-}
-
-
-export default ContinuarCompra

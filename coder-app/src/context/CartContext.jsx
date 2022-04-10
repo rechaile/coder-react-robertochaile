@@ -9,11 +9,11 @@ export function CartProvider({ children }) {
 
     const [cartList, setCartList] = useState([])
 
-    const addItem = (item) => {
+    const addItem = (item, cantidad) => {
 
         const notyf = new Notyf()
         notyf.success({
-            message: `Agregaste ${item.name} al carrito`,
+            message: `Agregaste ${item.cantidad}${item.name} al carrito`,
             duration: 2000,
         })
         

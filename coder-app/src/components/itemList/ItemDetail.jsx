@@ -1,32 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
-import ContinuarCompra from '../contador/ItemCount';
+import { useCartContext } from '../../context/CartContext';
+import { FinCompra, ItemCount } from '../contador/ItemCount';
+
 
 import './estilos/item.css';
 
-function ItemDetail({ name, price, image, stock, detalle }) {
 
- 
+
+
+function ItemDetail({ producto }) {
+
+  const {addItem} = useCartContext()
   
+  
+
+  const cantAgregada = (cantidad) => {
+     
+    addItem({...producto, cantidad: cantidad} )
+
+    };
+  
+    
+
   return (
       
       <Container>
           <Row>          
             <Col>
-              <div>{name}</div>
+              <div>{producto.name}</div>
                   
-              <div>{price}</div>  
+              <div>{producto.price}</div>  
 
-              <div>{detalle}</div> 
+              <div>{producto.detalle}</div> 
             </Col>
             <Col>
               <div>
-                  <img className='product-card__image' src={image} alt='' />
+                  <img className='product-card__image' src={producto.image} alt='' />
               </div>
             </Col>
           </Row>
           <Row>
-            <ContinuarCompra stock={stock} />
+            <ItemCount inicial={1} stock={producto.stock} onAdd = {cantAgregada} />
+            <FinCompra />  
           </Row>
       </Container>        
       

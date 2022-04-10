@@ -10,3 +10,8 @@
     height: 54px;
     cursor: pointer;
   }
+
+  .product-card__image {
+    width: 30%;
+    object-fit: contain;
+  }

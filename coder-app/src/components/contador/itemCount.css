@@ -58,6 +58,10 @@
     cursor: pointer;
   }
 
+  .boton__principal__hidden {
+    visibility: hidden;
+  }
+
   .boton__secundario {
     color: #ffffff;
     background-color: #1d2f6f;
@@ -69,4 +73,8 @@
     width: 148px;
     height: 54px;
     cursor: pointer;
+  }
+
+  .boton__secundario__hidden {
+    visibility: hidden;
   }
