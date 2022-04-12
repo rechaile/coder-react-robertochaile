@@ -36,10 +36,6 @@ export const ItemCount = ({ inicial, stock, onAdd }) => {
 
 const [cantidad, setCantidad] = useState (inicial);
 
-const cambioBtn = () => {
-    document.getElementById('terminarBtn').classList.add('boton__principal')
-    document.getElementById('seguirBtn').classList.add('boton__secundario')
-}
 
 const agregarProd = (num)=> {
     setCantidad(cantidad + num)
@@ -66,7 +62,7 @@ const agregarProd = (num)=> {
 
         <button 
         className='boton__principal'
-        onClick={() => { onAdd(cantidad); cambioBtn()}}
+        onClick={() => { onAdd(cantidad)}}
         disabled= {stock === 0 ? true : null}
         >
             Añadir

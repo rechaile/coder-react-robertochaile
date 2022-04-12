@@ -23,19 +23,39 @@ export function CartProvider({ children }) {
         setCant(cartCant)
     }, [cartList])
 
-    const addItem = (item, cantidad) => {
-
+    function isInCart(id){
+        const item = cartList.find(p => p.id === id)
+        if (item === undefined){
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
+    const addItem = (product, counter, id) => {
+    if (isInCart(id)){
+        const oldProduct = cartList.find(p => p.id === id)
+            
+            const newCant = oldProduct.amount + counter           
+           
+            const newProduct = { id: oldProduct.id, name: oldProduct.name, image: oldProduct.image, price: oldProduct.price, amount: newCant}
+            const cartWithoutOld = cartList.filter(product => product.id =! id)
+            const cartWithNew = [...cartWithoutOld, newProduct]
+            setCartList(cartWithNew)            
+        }
+         else {
         const notyf = new Notyf()
         notyf.success({
-            message: `Agregaste ${item.cantidad} ${item.name} al carrito`,
+            message: `Agregaste ${product.cantidad} ${product.name} al carrito`,
             duration: 2000,
         })
         
-        
+        const newItem = { id: product.id, name: product.name, image: product.image, price: product.price, amount: counter }
         setCartList([
                 ...cartList,
-                item
-        ])
+                newItem ])
+        }
     }
 
     const removeItem = (id) => {
@@ -44,17 +64,19 @@ export function CartProvider({ children }) {
         notyf.error({
             message: `Producto Eliminado`,
             duration: 2000,
-        })
+        }) 
 
-        const newCartList = cartList.filter(({ item }) => item.id !== id)
+        const newCartList = cartList.filter((product) => product.id !== id)
 		setCartList(newCartList)
     }
 
 
-    const clearCart = () => setCartList([])
-
+    const clearCart = () => {
+        setCartList([])
+        setCant(0)
+    }
 	return (
-		<CartContext.Provider value={{cartList, addItem, removeItem, clearCart}}>
+		<CartContext.Provider value={{cartList, cant, total, addItem, removeItem, clearCart}}>
 			{children}
 		</CartContext.Provider>
 	)
