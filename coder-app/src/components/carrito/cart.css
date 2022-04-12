@@ -10,8 +10,19 @@
     height: 54px;
     cursor: pointer;
   }
-
-  .product-card__image {
-    width: 30%;
+  .boton__principal__short {
+    color: black;
+    background-color: #FAC748;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 20px 20px auto;
+    width: 54px;
+    height: 54px;
+    cursor: pointer;
+  }
+  .product-card__image__cart {
+    width: 50%;
     object-fit: contain;
   }

@@ -14,7 +14,7 @@ export const FinCompra= ()=> {
                 
                     <Link to='/cart' >
                      <button id='terminarBtn'
-                    className="boton__secundario">  
+                    className="boton__secundario__hidden">  
                     Terminar compra</button>
                     </Link>
                 
