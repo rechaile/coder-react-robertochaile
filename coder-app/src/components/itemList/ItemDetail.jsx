@@ -42,7 +42,7 @@ function ItemDetail({ producto }) {
           </Row>
           <Row>
             <ItemCount inicial={1} stock={producto.stock} onAdd = {cantAgregada} />
-            <FinCompra />  
+             
           </Row>
       </Container>        
       

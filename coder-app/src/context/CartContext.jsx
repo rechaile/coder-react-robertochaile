@@ -19,7 +19,7 @@ export function CartProvider({ children }) {
        
         setTotal(t)
         const cartCant = cartList.length
-        // Las guardo en el estado
+        
         setCant(cartCant)
     }, [cartList])
 

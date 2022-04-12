@@ -27,7 +27,6 @@ const ItemDetailContainer= () => {
         
 
         const producto = productos.find(item => item.id === prodId ) 
-        console.log (producto) 
         return ( 
              cargando ? 
              <Container>
