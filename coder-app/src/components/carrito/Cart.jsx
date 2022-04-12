@@ -21,8 +21,8 @@ function Cart() {
       ( <>
       <p>Aún no elegiste tus productos</p>
           <Link to={"/"}>
-          <button className="boton__primario" onClick={clearCart} >
-              Empezar a comprar!
+          <button className="boton__principal" onClick={clearCart} >
+              ¡Vamos a comprar!
           </button>
       </Link>
       </>)}
@@ -37,9 +37,9 @@ function Cart() {
       { cartList.length > 0 &&
       <>
       <h2>${total}</h2>
-      <div className="cartItems__buttons">
-          <button onClick={clearCart} variant="contained" color="primary">
-              Saca todo del carrito che
+      <div >
+          <button className="boton__secundario" onClick={clearCart}>
+              Vaciar carrito
           </button>
           
       </div>

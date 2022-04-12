@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import { useCartContext } from '../../context/CartContext';
-import { FinCompra, ItemCount } from '../contador/ItemCount';
+import { ItemCount } from '../contador/ItemCount';
 
 
 import './estilos/item.css';
@@ -17,7 +17,7 @@ function ItemDetail({ producto }) {
 
   const cantAgregada = (cantidad) => {
      
-    addItem({...producto, cantidad: cantidad} )
+    addItem({...producto, cantidad: cantidad, id: producto.id} )
 
     };
   
@@ -41,7 +41,7 @@ function ItemDetail({ producto }) {
             </Col>
           </Row>
           <Row>
-            <ItemCount inicial={1} stock={producto.stock} onAdd = {cantAgregada} />
+            <ItemCount inicial={1} stock={producto.stock} onAdd = {cantAgregada} item= {producto} id={producto.id} />
              
           </Row>
       </Container>        

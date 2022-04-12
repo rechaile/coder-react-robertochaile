@@ -4,7 +4,8 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import "./navBar.css" 
 import { NavLink } from 'react-router-dom'
-import { MdAddShoppingCart } from "react-icons/md";
+
+import CartWidget from '../carrito/CartWidget'
 
 
 function NavBar() {
@@ -30,8 +31,8 @@ function NavBar() {
             <NavLink to={'/categoria/Precios+mas+bajos'}>Precios más bajos</NavLink>
           </Nav.Link>
           <Nav.Link>
-            <NavLink to={`/cart`}>
-              <MdAddShoppingCart className="carrito"/>
+            <NavLink className={'links'} to={`/cart`}>
+              <CartWidget/>  
             </NavLink>
           </Nav.Link>
         </Nav>

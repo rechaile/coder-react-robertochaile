@@ -44,7 +44,7 @@
     width: 90px;
   }
   
-  .cartItem__title > h3 {
+  .cartItem__title > h4 {
     width: 90px;
   }
   
@@ -52,4 +52,17 @@
     object-fit: contain;
     height: 100px;
     width: 90px;
+  }
+
+  .carritoNum {
+  background-color: coral;
+  color: azure;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 4px;
+  
+  }
+
+  .carrito {
+    width:5%
   }

@@ -1,13 +1,16 @@
 
 import React from 'react'
 import { useCartContext } from '../../context/CartContext'
-
+import { BsFillTrashFill } from "react-icons/bs";
 import '../carrito/cart.css'
 
 
 function CartItem( { id, name, image, price, amount }) {
     const { removeItem } = useCartContext()
+    console.log(amount)
 
+
+ 
     return (
         <div className="cartItem">
             <div className="cartItem__title">
@@ -20,13 +23,13 @@ function CartItem( { id, name, image, price, amount }) {
                 <h3>${price}</h3>
             </div>
             <div className="cartItem__amount">
-                <h3>{amount}</h3>
+                <h3>{`${amount}`}</h3>
             </div>
             <div className="cartItem__parcial">
                 <h3>${amount*price}</h3>
             </div>
-            <button onClick={ () => removeItem(id)} variant="contained" color="primary">
-                Eliminar
+            <button className='boton__principal__short' onClick={ () => removeItem(id)} >
+            <BsFillTrashFill/> 
             </button>
         </div>
     )
