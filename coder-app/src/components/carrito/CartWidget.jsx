@@ -2,7 +2,7 @@ import React from 'react';
 import './cart.css';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useCartContext } from '../../context/CartContext';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 function CartWidget() {
     const { cant } = useCartContext()
