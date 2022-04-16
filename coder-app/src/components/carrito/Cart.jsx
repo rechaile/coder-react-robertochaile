@@ -9,7 +9,7 @@ function Cart() {
 
   const { cartList, clearCart, total } = useCartContext()
   
- 
+ console.log(cartList)
 
   return ( 
   
@@ -30,7 +30,7 @@ function Cart() {
       <div className="cartItems">
           { cartList.length > 0 && cartList.map( product => <CartItem key={product.id} 
           id={product.id} name={product.name} image={product.image} price={product.price} 
-          amount={product.cantidad} />)}
+          cantidad={product.amount} />)}
       </div>
 
 
