@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { getProductos } from '../../data/data';
+
 import Item from './Item';
 
 import './estilos/itemList.css';
 import { useParams } from 'react-router-dom';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
-
+import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
 
 
 const ItemList = () => {
@@ -14,22 +14,25 @@ const ItemList = () => {
   const [cargando, setCargando] = useState(true)
   const {categoriaId} = useParams()
 
- 
 
   
+
+  const queryDb = getFirestore()
+  const queryCollection = collection(queryDb, 'products')
+  const queryFilter = query(queryCollection, where('category', '==', 'categoriaId') )
    
 useEffect (()=> {
   if (categoriaId) {
-  getProductos
-  .then(result => setProductos(result.filter(item => item.category === categoriaId)))
+    getDocs(queryFilter)
+    .then(resp => setProductos( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
   .catch(err => {
       console.log(err);
       alert('No podemos mostrar los productos en este momento');
   })
   .finally (()=> setCargando (false))
 } else {
-  getProductos
-  .then(result => setProductos(result))
+  getDocs(queryCollection)
+  .then(resp => setProductos( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
   .catch(err => {
       console.log(err);
       alert('No podemos mostrar los productos en este momento');
