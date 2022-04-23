@@ -10,36 +10,38 @@ import {collection, getDocs, getFirestore, query, where} from 'firebase/firestor
 
 const ItemList = () => {
   
-  const [productos, setProductos] = useState([]);
-  const [cargando, setCargando] = useState(true)
-  const {categoriaId} = useParams()
-
-
   
-
-  const queryDb = getFirestore()
-  const queryCollection = collection(queryDb, 'products')
-  const queryFilter = query(queryCollection, where('category', '==', 'categoriaId') )
+    const [productos, setProductos] = useState([]);
+    const [cargando, setCargando] = useState(true)
+    const {categoriaId} = useParams()
+  
+    
+  
+    const queryDb = getFirestore()
+    const queryCollection = collection(queryDb, 'products')
    
-useEffect (()=> {
-  if (categoriaId) {
-    getDocs(queryFilter)
+     
+  useEffect (()=> {
+    if (categoriaId === undefined) {
+     return getDocs(queryCollection)
+    .then(resp => setProductos( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
+    .catch(err => {
+        console.log(err);
+        alert('No podemos mostrar los productos en este momento');
+    })
+    .finally (()=> setCargando (false))
+    } else {
+    const queryFilter = query(queryCollection, where('category', '==', categoriaId))
+    return getDocs(queryFilter)
     .then(resp => setProductos( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
   .catch(err => {
       console.log(err);
       alert('No podemos mostrar los productos en este momento');
   })
   .finally (()=> setCargando (false))
-} else {
-  getDocs(queryCollection)
-  .then(resp => setProductos( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
-  .catch(err => {
-      console.log(err);
-      alert('No podemos mostrar los productos en este momento');
-  })
-  .finally (()=> setCargando (false))
-  }
-}, [categoriaId]) 
+    
+    }
+  }, [categoriaId]) 
 
 return ( 
     <div className="product-list-container">

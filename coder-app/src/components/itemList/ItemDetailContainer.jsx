@@ -1,4 +1,4 @@
-import { collection, getDoc, getFirestore, query, where } from "firebase/firestore";
+import { doc, getDoc, getFirestore} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -13,24 +13,24 @@ const ItemDetailContainer= () => {
         const [producto, setProducto] = useState([]);
         const [cargando, setCargando] = useState(true)
         const {detalleId} = useParams()
-       
-        const queryDb = getFirestore()
-        const queryCollection = collection(queryDb, 'products')
-        const queryFilter = query(queryCollection, where('id', '==', detalleId )
-
-        useEffect (()=> {
-            
-            getDoc(queryFilter)
-            .then(resp => setProducto( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
-            .catch(err => {
-                console.log(err);
-                alert('No podemos mostrar el producto en este momento');
-            })
-            .finally (()=> setCargando (false))
-          } , [detalleId])
-         
         
-
+        const queryDb = getFirestore()
+        const queryProduct = doc(queryDb, 'products', detalleId)
+       
+        useEffect (()=> {
+           
+           
+            getDoc(queryProduct)
+            .then(resp => setProducto( { id: resp.id, ...resp.data()})) 
+            .catch(err => {
+              console.log(err);
+              alert('No podemos mostrar los productos en este momento');
+          })
+          .finally (()=> setCargando (false))
+            
+            
+          }, [detalleId]) 
+        
         return ( 
              cargando ? 
              <Container>
