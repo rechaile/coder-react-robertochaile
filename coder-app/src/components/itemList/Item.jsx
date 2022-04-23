@@ -16,9 +16,9 @@ const Item = ({ name, image, price, id, category}) => {
                 <h3 className="product-card__name">{name}</h3>
             </div>
             <div>
-                <h2 className="product-card__name">{category}</h2>
+                <h2 className="product-card__category ">{category}</h2>
             </div>
-            <p className="product-card__name">${price}</p>
+            <p className="product-card__price">${price}</p>
             
             <div>
                 <Link to={`/detalle/${id}`}>   

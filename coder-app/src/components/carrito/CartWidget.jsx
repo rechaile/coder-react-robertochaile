@@ -2,7 +2,6 @@ import React from 'react';
 import './cart.css';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useCartContext } from '../../context/CartContext';
-import { Container, Row } from 'react-bootstrap';
 
 function CartWidget() {
     const { cantidadTotalItem } = useCartContext()
@@ -11,19 +10,10 @@ function CartWidget() {
     
     return (
         <div className="cartWidget">
-           
+            <MdAddShoppingCart className="carrito"/>
             {
              (cantidadTotalItem()) > 0 && 
-            
-            <Container>
-                <Row>
-                    <div >
-                    
-                    <MdAddShoppingCart className="carrito"/>
-                    <span className='carritoNum'>{cantidadTotalItem()}</span> 
-                    </div>
-                </Row>
-            </Container>
+                <span className='carritoNum'>{cantidadTotalItem()}</span> 
             }
 
         
