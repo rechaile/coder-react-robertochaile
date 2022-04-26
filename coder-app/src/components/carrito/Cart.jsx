@@ -9,7 +9,9 @@ function Cart() {
 
   const { cartList, clearCart, total } = useCartContext()
   
- console.log(cartList)
+  const createOrder = (e) => {
+    console.log('funciona crear orden')
+  }
 
   return ( 
   
@@ -30,7 +32,9 @@ function Cart() {
       <div className="cartItems">
           { cartList.length > 0 && cartList.map( product => <CartItem key={product.id} 
           id={product.id} name={product.name} image={product.image} price={product.price} 
-          cantidad={product.amount} />)}
+          cantidad={product.amount} />)}  
+          
+          
       </div>
 
 
@@ -38,6 +42,9 @@ function Cart() {
       <>
       <h2>${total}</h2>
       <div >
+          <button className="boton__principal" onClick={createOrder}>
+            Terminar compra
+          </button>
           <button className="boton__secundario" onClick={clearCart}>
               Vaciar carrito
           </button>
