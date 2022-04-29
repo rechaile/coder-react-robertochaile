@@ -67,3 +67,12 @@
     margin: 8px;
     color:black
   }
+
+  .swal-button {
+    padding: 7px 19px;
+    border-radius: 2px;
+    background-color: #FAC748;
+    font-size: 12px;
+    color: black;
+    
+  }
