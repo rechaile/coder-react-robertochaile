@@ -4,9 +4,14 @@ import {addDoc, collection, documentId, getDocs, getFirestore, query, where, wri
 import { Link } from "react-router-dom"
 import CartItem from "./CartItem"
 import swal from "sweetalert"
+import { useState } from "react"
   
 
 function Cart() {
+
+  const [dataForm, setDataForm] = useState({
+    name: '', email: '', phone: ''
+  })
 
   const { cartList, clearCart, cantidadTotalItem, total } = useCartContext()
   
@@ -17,7 +22,7 @@ function Cart() {
           
           let orden = {}      
       
-          orden.buyer = { name: 'Federico', email: 'f@gmail.com', phone: '023456987' }
+          orden.buyer = dataForm
           orden.total = cantidadTotalItem ()
       
           orden.items = cartList.map(cartItem => {
@@ -57,7 +62,15 @@ function Cart() {
           .finally(()=> console.log('actualizado'))
 
           batch.commit()
+
   }
+
+  const handleChange = (e) => {
+    setDataForm({
+      ...dataForm,
+      [e.target.name]: e.target.value
+  })
+}
 
 
   
@@ -91,9 +104,40 @@ function Cart() {
       <>
       <h2>${total}</h2>
       <div >
-          <button className="boton__principal" onClick={createOrder}>
-            Terminar compra
-          </button>
+        <div>
+          <form className="form-data"
+                  onSubmit={createOrder}                 
+              >
+                  <input 
+                      className="input-compra"
+                      type='text' 
+                      name='name' 
+                      placeholder='Ingrese su nombre' 
+                      value={dataForm.name}
+                      onChange={handleChange}
+                  /><br />
+                  <input
+                      className="input-compra" 
+                      type='number' 
+                      name='phone'
+                      placeholder='Ingrese su teléfono' 
+                      value={dataForm.phone}
+                      onChange={handleChange}
+                  /><br/>
+                  <input
+                      className="input-compra" 
+                      type='email' 
+                      name='email'
+                      placeholder='Ingrese su email' 
+                      value={dataForm.email}
+                      onChange={handleChange}
+                  /><br/>
+                  <button className="boton__principal" onClick={createOrder}>
+                    Terminar compra
+                  </button>
+          </form>
+        </div>
+          
           <button className="boton__secundario" onClick={clearCart}>
               Vaciar carrito
           </button>
