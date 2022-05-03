@@ -38,7 +38,7 @@ function Cart() {
           const db = getFirestore() 
           const queryCollection = collection(db, 'orders')
           await addDoc(queryCollection, orden)
-          .then(({id}) => swal(`Gracias por tu compra!`, `Tu id de compra: ${id}`, "success"))
+          .then(({id}) => swal(`Gracias por tu compra, ${dataForm.name}!`, `Tu id de compra: ${id}`, "success"))
           .catch(err => {
             console.log(err);
             alert('No podemos mostrar los productos en este momento');
@@ -94,7 +94,7 @@ function Cart() {
       <div className="cartItems">
           { cartList.length > 0 && cartList.map( product => <CartItem key={product.id} 
           id={product.id} name={product.name} image={product.image} price={product.price} 
-          cantidad={product.amount} />)}  
+          amount={product.amount} />)}  
           
           
       </div>

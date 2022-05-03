@@ -9,40 +9,40 @@ import "./itemCount.css";
 
 
 
-export const ItemCount = ({ inicial, stock, onAdd, item, id}) => {
+export const ItemCount = ({ initial, stock, onAdd, item, id}) => {
 
     
 
-const [cantidad, setCantidad] = useState (inicial);
+const [amount, setAmount] = useState (initial);
 
 const [ open, setOpen ] = useState(false)
 
     const { addItem } = useCartContext()
     
     // Uno las funciones de agregar al carrito con la de mostrar el "Terminar compra"
-    function addAndOpen(item, cantidad, id){
-        addItem(item, cantidad, id);
+    function addAndOpen(item, amount, id){
+        addItem(item, amount, id);
         setOpen(true)
     }
 
-const agregarProd = (num)=> {
-    setCantidad(cantidad + num)
+const addProd = (num)=> {
+    setAmount(amount + num)
 };
   return (
     <div className='contadorContainer'>
         <div className='numContainer'>
             <button 
             className='numContainer__boton'
-            onClick={() => agregarProd(-1)}
-            disabled= {cantidad === inicial ? true : null}
+            onClick={() => addProd(-1)}
+            disabled= {amount === initial ? true : null}
             >
                 -
             </button>
-            <span className='numContainer__cantidad'>{ cantidad }</span>
+            <span className='numContainer__cantidad'>{ amount }</span>
             <button 
             className='numContainer__boton'
-            onClick={()=> agregarProd(+1)}
-            disabled= {cantidad === stock ? true : null}
+            onClick={()=> addProd(+1)}
+            disabled= {amount === stock ? true : null}
             >
                 +
             </button>
@@ -51,10 +51,10 @@ const agregarProd = (num)=> {
         (<div>
             <button 
             className='boton__principal'
-            onClick={() => { onAdd(cantidad) ; addAndOpen(item, cantidad, id)}}
+            onClick={() => { onAdd(amount) ; addAndOpen(item, amount, id)}}
             disabled= {stock === 0 ? true : null}
             >
-                Añadir al <MdAddShoppingCart className="carrito"/>
+                Añadir al <MdAddShoppingCart className="cart"/>
             </button>
         </div>) : (
             <Container>
@@ -62,16 +62,20 @@ const agregarProd = (num)=> {
                 <Col>
                 
                     <Link to='/cart' >
-                     <button id='terminarBtn'
-                    className="boton__principal">  
-                    Terminar compra</button>
+                        <button 
+                            id='terminarBtn'
+                            className="boton__principal">  
+                             Terminar compra
+                        </button>
                     </Link>
                 
                 <br></br>
                     <Link to={'/'}>   
-                        <button id='seguirBtn'
-                            className="boton__secundario" 
-                        >Seguir comprando</button>
+                        <button 
+                            id='seguirBtn'
+                            className="boton__secundario">
+                            Seguir comprando
+                        </button>
                     </Link>
                 </Col>
             </Row>

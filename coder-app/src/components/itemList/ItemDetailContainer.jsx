@@ -10,29 +10,29 @@ import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer= () => {
         
-        const [producto, setProducto] = useState([]);
-        const [cargando, setCargando] = useState(true)
-        const {detalleId} = useParams()
+        const [product, setProduct] = useState([]);
+        const [loading, setLoading] = useState(true)
+        const {detailId} = useParams()
         
         const queryDb = getFirestore()
-        const queryProduct = doc(queryDb, 'products', detalleId)
+        const queryProduct = doc(queryDb, 'products', detailId)
        
         useEffect (()=> {
            
            
             getDoc(queryProduct)
-            .then(resp => setProducto( { id: resp.id, ...resp.data()})) 
+            .then(resp => setProduct( { id: resp.id, ...resp.data()})) 
             .catch(err => {
               console.log(err);
               alert('No podemos mostrar los productos en este momento');
           })
-          .finally (()=> setCargando (false))
+          .finally (()=> setLoading(false))
             
             
-          }, [detalleId]) 
+          }, [detailId]) 
         
         return ( 
-             cargando ? 
+             loading ? 
              <Container>
                  <Row>
                      <Col>
@@ -45,7 +45,7 @@ const ItemDetailContainer= () => {
                 ( 
             <>
                 <ItemDetail 
-                producto={producto}/>
+                product={product}/>
             </>
                 )
         )}

@@ -6,6 +6,7 @@ import "./navBar.css"
 import { NavLink } from 'react-router-dom'
 
 import CartWidget from '../carrito/CartWidget'
+import logo from './logo/logo-MF.png'
 
 
 function NavBar() {
@@ -14,7 +15,7 @@ function NavBar() {
     <Container>
       <NavLink to={`/`}>
         <Navbar.Brand>
-          MercaditoFree
+          <img className='logo' src={logo} alt="logo mercadito free"/>
         </Navbar.Brand>
       </NavLink>
       

@@ -45,11 +45,11 @@ export function CartProvider({ children }) {
         }
     }
     
-    const addItem = (producto, cantidad, id) => {
+    const addItem = (producto, amount, id) => {
     if (isInCart(id)){
         const oldProduct = cartList.find(p => p.id === id)
             
-            const newCant = oldProduct.amount + cantidad         
+            const newCant = oldProduct.amount + amount        
            
             const newProduct = { id: oldProduct.id, name: oldProduct.name, image: oldProduct.image, price: oldProduct.price, amount: newCant}
             const cartWithoutOld = cartList.filter(producto => producto.id =! id)
@@ -59,11 +59,11 @@ export function CartProvider({ children }) {
          else {
         const notyf = new Notyf()
         notyf.success({
-            message: `Agregaste ${cantidad} ${producto.name} al carrito`,
+            message: `Agregaste ${amount} ${producto.name} al carrito`,
             duration: 2000,
         })
         
-        const newItem = { id: producto.id, name: producto.name, image: producto.image, price: producto.price, amount: cantidad }
+        const newItem = { id: producto.id, name: producto.name, image: producto.image, price: producto.price, amount: amount }
         setCartList([
                 ...cartList,
                 newItem ])

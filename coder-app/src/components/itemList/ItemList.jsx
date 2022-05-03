@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Item from './Item';
 
-import './estilos/itemList.css';
+import './styles/itemList.css';
 import { useParams } from 'react-router-dom';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
@@ -11,9 +11,9 @@ import {collection, getDocs, getFirestore, query, where} from 'firebase/firestor
 const ItemList = () => {
   
   
-    const [productos, setProductos] = useState([]);
-    const [cargando, setCargando] = useState(true)
-    const {categoriaId} = useParams()
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true)
+    const {categoryId} = useParams()
   
     
   
@@ -22,51 +22,51 @@ const ItemList = () => {
    
      
   useEffect (()=> {
-    if (categoriaId === undefined) {
+    if (categoryId === undefined) {
      return getDocs(queryCollection)
-    .then(resp => setProductos( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
+    .then(resp => setProducts( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
     .catch(err => {
         console.log(err);
         alert('No podemos mostrar los productos en este momento');
     })
-    .finally (()=> setCargando (false))
+    .finally (()=> setLoading (false))
     } else {
-    const queryFilter = query(queryCollection, where('category', '==', categoriaId))
+    const queryFilter = query(queryCollection, where('category', '==', categoryId))
     return getDocs(queryFilter)
-    .then(resp => setProductos( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
+    .then(resp => setProducts( resp.docs.map(item => ({ id: item.id, ...item.data()})) ))
   .catch(err => {
       console.log(err);
       alert('No podemos mostrar los productos en este momento');
   })
-  .finally (()=> setCargando (false))
+  .finally (()=> setLoading (false))
     
     }
-  }, [categoriaId]) 
+  }, [categoryId]) 
 
 return ( 
     <div className="product-list-container">
     {
-      cargando ?       
+      loading ?       
       
       <Container>
-      <Row>
-          <Col>
-             <Spinner animation="border" size="m" />
-         </Col>
-     </Row>
-  </Container>
+        <Row>
+            <Col>
+              <Spinner animation="border" size="m" />
+          </Col>
+        </Row>
+       </Container>
       : ( <>
           {
-            productos.map((producto) => {
+            products.map((product) => {
               return (
-                <div key={producto.id}>
+                <div key={product.id}>
                   <Item
-                    name={producto.name}
-                    image={producto.image}
-                    price={producto.price}
-                    stock={producto.stock}
-                    id={producto.id}
-                    category= {producto.category}
+                    name={product.name}
+                    image={product.image}
+                    price={product.price}
+                    stock={product.stock}
+                    id={product.id}
+                    category= {product.category}
                   />
                 </div>
               );

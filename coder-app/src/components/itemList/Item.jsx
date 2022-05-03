@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-import './estilos/item.css';
+import './styles/item.css';
 
 
 const Item = ({ name, image, price, id, category}) => {
@@ -12,17 +12,17 @@ const Item = ({ name, image, price, id, category}) => {
             <div>
                 <img className="product-card__image" src={image} alt="" />
             </div>
-            <div>
-                <h3 className="product-card__name">{name}</h3>
+            <div className="product-name__container">
+                <p className="product-card__name">{name}</p>
             </div>
             <div>
-                <h2 className="product-card__category ">{category}</h2>
+                <p className="product-card__category">{category}</p>
             </div>
             <p className="product-card__price">${price}</p>
             
             <div>
                 <Link to={`/detalle/${id}`}>   
-                    <button className='boton__principal'>Ver más</button>
+                    <button className='boton__card'>Ver más</button>
                 </Link>
             </div>
         </article>

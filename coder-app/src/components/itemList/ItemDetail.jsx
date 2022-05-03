@@ -4,20 +4,20 @@ import { useCartContext } from '../../context/CartContext';
 import { ItemCount } from '../contador/ItemCount';
 
 
-import './estilos/item.css';
+import './styles/item.css';
 
 
 
 
-function ItemDetail({ producto }) {
+function ItemDetail({ product }) {
 
   const {addItem} = useCartContext()
   
   
 
-  const cantAgregada = (cantidad) => {
+  const amountInCart = (amount) => {
      
-    addItem({...producto, cantidad: cantidad, id: producto.id} )
+    addItem({...product, amount: amount, id: product.id} )
 
     };
   
@@ -28,21 +28,24 @@ function ItemDetail({ producto }) {
       <Container>
           <Row>          
             <Col>
-              <div>{producto.name}</div>
-                  
-              <div>{producto.price}</div>  
+              <div className="detail-card">
+                <div className="product-detail__name">{product.name}</div>
+                    
+                <div className="product-detail__price">${product.price}</div>  
 
-              <div>{producto.detalle}</div> 
+                <div className="product-detail">
+                  <p>{product.detail}</p>
+                </div> 
+              </div>
             </Col>
             <Col>
-              <div>
-                  <img className='product-card__image' src={producto.image} alt='' />
+              <div className="detail-card" >
+                  <img className='product-detail__image' src={product.image} alt='' />
               </div>
             </Col>
           </Row>
           <Row>
-            <ItemCount inicial={1} stock={producto.stock} onAdd = {cantAgregada} item= {producto} id={producto.id} />
-             
+            <ItemCount initial={1} stock={product.stock} onAdd = {amountInCart} item= {product} id={product.id} />
           </Row>
       </Container>        
       

@@ -1,11 +1,20 @@
 .menu {
     background-color: gold;
+    height: 100px;
 }
 
-.carrito {
+.cart {
     color: black;
+    width: 24px;
+    height: fit-content;
+    
 }
 
 .links {
     text-decoration: none;
+}
+
+.logo {
+    width: 256px;
+    height: fit-content;
 }

@@ -10,7 +10,7 @@ function CartWidget() {
     
     return (
         <div className="cartWidget">
-            <MdAddShoppingCart className="carrito"/>
+            <MdAddShoppingCart className="cart"/>
             {
              (cantidadTotalItem()) > 0 && 
                 <span className='carritoNum'>{cantidadTotalItem()}</span> 
