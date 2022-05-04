@@ -1,3 +1,17 @@
+# Proyecto Final React - Roberto Chaile 2022
+
+#### - Proyecto Final de React - Coderhouse 2022
+#### - Profesor: Federico Osandón
+
+Descripción:
+Sitio e-commerce simulando ofertas y productos de bajo precio desde Mercado Libre.
+
+
+## Authors
+
+- [@rechaile](https://github.com/rechaile)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -32,6 +46,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+## Librerías
+
+1. [Bootstrap](https://react-bootstrap.github.io/) para estilado
+2. [swal](https://sweetalert2.github.io/) para modales
+3. [notyf](https://github.com/caroso1222/notyf#readme) para notificaciones emergentes
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
