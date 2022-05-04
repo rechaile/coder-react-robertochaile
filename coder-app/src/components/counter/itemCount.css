@@ -1,4 +1,4 @@
-.contadorContainer {
+.counterContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +15,7 @@
     margin: 40px auto 0;
   }
   
-  .numContainer__boton {
+  .numContainer__button {
     color: #1d2f6f;
     width: 100%;
     height: 100%;
@@ -25,7 +25,7 @@
     transition: all 250ms ease-out;
   }
   
-  .numContainer__boton:hover {
+  .numContainer__button:hover {
     border: none;
     color: #ffffff;
     background-color: #FAC748;
@@ -33,11 +33,11 @@
   
   .numContainer__button[disabled] {
     color: grey;
-    background-color: transparent;
-    border: 1px solid #080808;
+    background-color: gainsboro;
+    border: none;
   }
   
-  .numContainer__cantidad {
+  .numContainer__amount {
     text-align: center;
     height: 100%;
     padding-top: 10px;
@@ -45,7 +45,7 @@
     background-color: #ffffff;
   }
   
-  .boton__principal {
+  .button__main {
     color: black;
     background-color: #FAC748;
     border: none;
@@ -58,11 +58,11 @@
     cursor: pointer;
   }
 
-  .boton__principal__hidden {
+  .button__main__hidden {
     visibility: hidden;
   }
 
-  .boton__secundario {
+  .button__secondary {
     color: #ffffff;
     background-color: #1d2f6f;
     border: none;
@@ -75,6 +75,6 @@
     cursor: pointer;
   }
 
-  .boton__secundario__hidden {
+  .button__secondary__hidden {
     visibility: hidden;
   }

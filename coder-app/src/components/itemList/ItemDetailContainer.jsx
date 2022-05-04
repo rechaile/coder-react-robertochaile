@@ -19,7 +19,6 @@ const ItemDetailContainer= () => {
        
         useEffect (()=> {
            
-           
             getDoc(queryProduct)
             .then(resp => setProduct( { id: resp.id, ...resp.data()})) 
             .catch(err => {
@@ -41,14 +40,15 @@ const ItemDetailContainer= () => {
                         </div>
                     </Col>
                 </Row>
-             </Container> :
+             </Container> 
+             :
                 ( 
-            <>
-                <ItemDetail 
-                product={product}/>
-            </>
+                    <>
+                        <ItemDetail product={product}/>
+                    </>
                 )
-        )}
+        )
+    }
 
   
        

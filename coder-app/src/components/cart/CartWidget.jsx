@@ -4,19 +4,15 @@ import { MdAddShoppingCart } from 'react-icons/md';
 import { useCartContext } from '../../context/CartContext';
 
 function CartWidget() {
-    const { cantidadTotalItem } = useCartContext()
-
-    
+    const { amountTotalItem } = useCartContext()
     
     return (
         <div className="cartWidget">
             <MdAddShoppingCart className="cart"/>
             {
-             (cantidadTotalItem()) > 0 && 
-                <span className='carritoNum'>{cantidadTotalItem()}</span> 
+             (amountTotalItem()) > 0 && 
+                <span className='carritoNum'>{amountTotalItem()}</span> 
             }
-
-        
         </div>
     )
 }

@@ -1,4 +1,4 @@
-.boton__principal {
+.button__main {
     color: black;
     background-color: #FAC748;
     border: none;
@@ -10,7 +10,7 @@
     height: 54px;
     cursor: pointer;
   }
-  .boton__principal__short {
+  .button__main__short {
     color: black;
     background-color: #FAC748;
     border: none;

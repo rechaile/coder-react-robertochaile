@@ -12,6 +12,19 @@
 
 .links {
     text-decoration: none;
+    padding: 16px 48px;
+    color: black;
+    margin: auto;
+    font-weight: 600;
+}
+
+.links:hover {
+    text-decoration: none;
+    padding: 16px 48px;
+    color: rgb(53, 104, 222);
+    margin: auto;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .logo {

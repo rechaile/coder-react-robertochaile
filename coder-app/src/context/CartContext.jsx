@@ -9,26 +9,26 @@ export function CartProvider({ children }) {
 
     const [ cartList, setCartList ] = useState([])
     const [total, setTotal] = useState()
-    const [cant, setCant] = useState(0)
+    const [quantity, setQuantity] = useState(0)
     
 
     useEffect(() => {
         var t = 0
-        // Con el map obtengo el total por producto
-        const totals = cartList.map( p => p.price * p.amount)
-        // Sumo a t el total por producto de cada uno
-        totals.map( p => t = t + p)
-        // Lo guardo en el estado
+        
+        const totals = cartList.map( product => product.price * product.amount)
+        
+        totals.map( product => t = t + product)
+       
         setTotal(t)
-        // Calculo la cantidad de productos
-        const cartCant = cartList.length
-        // Las guardo en el estado
-        setCant(cartCant)
+        
+        const cartQuantity = cartList.length
+       
+        setQuantity(cartQuantity)
     }, [cartList])
 
-    const cantidadTotalItem = () => {
-        return cartList.reduce((acum, prod) => acum += prod.amount , 0);
-         // acum = acum + cantidad
+    const amountTotalItem = () => {
+        return cartList.reduce((acumulate, product) => acumulate += product.amount , 0);
+         
     }
 
     
@@ -36,7 +36,7 @@ export function CartProvider({ children }) {
   
 
     function isInCart(id){
-        const item = cartList.find(p => p.id === id)
+        const item = cartList.find(product => product.id === id)
         if (item === undefined){
             return false
         }
@@ -45,25 +45,25 @@ export function CartProvider({ children }) {
         }
     }
     
-    const addItem = (producto, amount, id) => {
+    const addItem = (product, amount, id) => {
     if (isInCart(id)){
-        const oldProduct = cartList.find(p => p.id === id)
+        const oldProduct = cartList.find(product => product.id === id)
             
-            const newCant = oldProduct.amount + amount        
+            const newAmount = oldProduct.amount + amount        
            
-            const newProduct = { id: oldProduct.id, name: oldProduct.name, image: oldProduct.image, price: oldProduct.price, amount: newCant}
-            const cartWithoutOld = cartList.filter(producto => producto.id =! id)
+            const newProduct = { id: oldProduct.id, name: oldProduct.name, image: oldProduct.image, price: oldProduct.price, amount: newAmount}
+            const cartWithoutOld = cartList.filter(product => product.id =! id)
             const cartWithNew = [...cartWithoutOld, newProduct]
             setCartList(cartWithNew)            
         }
          else {
         const notyf = new Notyf()
         notyf.success({
-            message: `Agregaste ${amount} ${producto.name} al carrito`,
+            message: `Agregaste ${amount} ${product.name} al carrito`,
             duration: 2000,
         })
         
-        const newItem = { id: producto.id, name: producto.name, image: producto.image, price: producto.price, amount: amount }
+        const newItem = { id: product.id, name: product.name, image: product.image, price: product.price, amount: amount }
         setCartList([
                 ...cartList,
                 newItem ])
@@ -78,7 +78,7 @@ export function CartProvider({ children }) {
             duration: 2000,
         }) 
 
-        const newCartList = cartList.filter((producto) => producto.id !== id)
+        const newCartList = cartList.filter((product) => product.id !== id)
 		setCartList(newCartList)
     }
 
@@ -88,7 +88,7 @@ export function CartProvider({ children }) {
        
     }
 	return (
-		<CartContext.Provider value={{cartList, total, cant, cantidadTotalItem, addItem, removeItem, clearCart}}>
+		<CartContext.Provider value={{cartList, total, quantity, amountTotalItem, addItem, removeItem, clearCart}}>
 			{children}
 		</CartContext.Provider>
 	)

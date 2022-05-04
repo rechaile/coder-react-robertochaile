@@ -15,8 +15,6 @@ const ItemList = () => {
     const [loading, setLoading] = useState(true)
     const {categoryId} = useParams()
   
-    
-  
     const queryDb = getFirestore()
     const queryCollection = collection(queryDb, 'products')
    
@@ -56,24 +54,25 @@ return (
         </Row>
        </Container>
       : ( <>
-          {
-            products.map((product) => {
-              return (
-                <div key={product.id}>
-                  <Item
-                    name={product.name}
-                    image={product.image}
-                    price={product.price}
-                    stock={product.stock}
-                    id={product.id}
-                    category= {product.category}
-                  />
-                </div>
-              );
-            })
-          }
-        </>) 
-      }
+            {
+              products.map((product) => {
+                return (
+                  <div key={product.id}>
+                    <Item
+                      name={product.name}
+                      image={product.image}
+                      price={product.price}
+                      stock={product.stock}
+                      id={product.id}
+                      category= {product.category}
+                    />
+                  </div>
+                );
+              })
+            }
+          </>
+        ) 
+    }
   </div>
 );
 };
